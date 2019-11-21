@@ -65,7 +65,7 @@ public class Produto extends javax.swing.JFrame {
         TableProd = new javax.swing.JTable();
         excluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Formulario"));
@@ -224,6 +224,7 @@ public class Produto extends javax.swing.JFrame {
         for (int i = 0; i < TableProd.getColumnCount(); i++) {
             modelo.setValueAt(info[i], filas, i);
         }
+
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
@@ -236,8 +237,9 @@ public class Produto extends javax.swing.JFrame {
         QntEstoque.setText("");
         Nomeproduto.setText("");
         PrecoVend.setText("");
+        
 
-        /* Primeiro modelo para preencher a tabela, mas achamos um método mais eficiente
+        /*  Primeiro modelo para preencher a tabela, mas achamos um método mais eficiente
         
         String nomeProd;
         double precoVend;
@@ -247,10 +249,10 @@ public class Produto extends javax.swing.JFrame {
         nomeProd = (Nomeproduto.getText());// pegando a informacao do campo de nota String e transformando em inteiro
         precoVend = Double.parseDouble(PrecoVend.getText());
 
-        NotaController.salvar(nomeProd, precoVend, quantEstoq);
+        ProdutoController.salvar(nomeProd, precoVend, quantEstoq);
         refreshTable();
-         *///
-       
+
+         */
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void NomeprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeprodutoActionPerformed
@@ -277,7 +279,7 @@ public class Produto extends javax.swing.JFrame {
         if (fila >= 0) {
             modelo.removeRow(fila);
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Selecionar Fila");
         }
 
@@ -287,17 +289,16 @@ public class Produto extends javax.swing.JFrame {
         // TODO add your handling code here:
         String buscar = txtPesquisar.getText();
         ProdutoDAO.Buscar(buscar);
-        
+
         txtPesquisar.setText("");
-        
-        
-        
+
+
     }//GEN-LAST:event_btPesquisarActionPerformed
-     public void CarregaDados(NotaProd pesquisa){
-         this.QntEstoque.setText(Double.toString(pesquisa.getQuantEstoq()));
-         this.Nomeproduto.setText(pesquisa.getNomeProduto());
-         this.PrecoVend.setText(Double.toString(pesquisa.getPrecoVend()));
-     }
+    public void CarregaDados(NotaProd pesquisa) {
+        this.QntEstoque.setText(Double.toString(pesquisa.getQuantEstoq()));
+        this.Nomeproduto.setText(pesquisa.getNomeProduto());
+        this.PrecoVend.setText(Double.toString(pesquisa.getPrecoVend()));
+    }
     private void txtPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisarActionPerformed

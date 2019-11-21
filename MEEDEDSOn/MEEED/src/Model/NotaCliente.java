@@ -16,9 +16,9 @@ public class NotaCliente {
     int dataNascimento;
 
     public NotaCliente() {
-        this.nome = nome;
-        this.CPF = CPF;
-        this.dataNascimento = dataNascimento;
+        this.nome = "";
+        this.CPF = 0;
+        this.dataNascimento = 0;
     }
 
     public String getNome() {
